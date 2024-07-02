@@ -1,4 +1,6 @@
 API Documentation
+
+
 Domain API
 GET Domain Data
 Description: Retrieves domain data from the server. If the domain exists in the list, it returns the domain data. If not, it adds the domain to the list and then returns the data.
