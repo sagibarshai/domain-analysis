@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  api:
+    build: ./Api
+    depends_on:
+      - data
+    ports:
+      - "4000:4000"
+
+  scanner:
+    build: ./Scanner
+    environment:
+      VIRUS_TOTAL_API_KEY: e49b6a3b4684a10d1497dc47f25dd8260bdb7d5c550abd5559412014fca67d73
+      WHO_IS_API_KEY: at_9MxeAGVEcLeqcdF1LSAHJlC9Uup58
+    depends_on:
+      - data
+    ports:
+      - "4002:4002"
+
+  data:
+    build: ./Data
+    depends_on:
+      - postgres
+    ports:
+      - "4001:4001"
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: domains
+    ports:
+      - "5432:5432"
