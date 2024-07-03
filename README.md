@@ -17,6 +17,8 @@ Make sure that ports 4000, 4001, and 4002 are available and the Docker daemon is
 Start the application using Docker Compose:
 
 
+To change the cronjob interval (default is 30 seconds, can be changed to 30 days), go to Scanner => src => config and modify the cronjobIntervalLoop value.
+
 docker-compose up
 
 ************************************************************************************************************************************************************************************************************************
@@ -125,3 +127,82 @@ Ensures that domain analysis data is kept up-to-date.
 Communication
 API Service to Data Service: The API Service makes synchronous API calls to the Data Service to retrieve and update domain data.
 Cronjob Service to Data Service: The Cronjob Service makes synchronous API calls to the Data Service to update the domain analysis data with the latest information from WHOIS and VirusTota
+
+
+
+
+************************************************************************************************************************************************************************************************************************
+
+
+Future Improvements:
+
+
+
+
+
+1. Add Rate Limiter
+Why: To prevent abuse and ensure fair usage of the system, adding a rate limiter will help manage the number of requests a user can make within a specified time frame. This enhances the security and stability of the application by protecting it from excessive traffic and potential DDoS attacks.
+
+
+
+
+2. Deep Dive into APIs
+Why: Spending more time understanding the WHOIS and VirusTotal APIs will allow for better integration and more efficient use of their features. This could lead to improved data quality, more accurate results, and optimized API usage, which can reduce costs and improve performance.
+
+
+
+
+3. Add Middleware for Caching with Redis
+Why: Implementing a caching mechanism with Redis for domain requests can significantly reduce the load on the database, improve response times, and improve the overall performance of the system. By caching frequently accessed data, the system can serve requests faster and more efficiently.
+
+
+
+
+4. Improve CORS Configuration
+Why: Properly configuring CORS ensures that only authorized services can communicate with each other, enhancing security by preventing unauthorized access. It also helps in protecting against cross-origin attacks and ensuring that data is only accessible to intended clients.
+
+
+
+5. Create Private NPM Packages for Shared Code
+Why: Extracting common code, such as error handling and middleware, types and models into private NPM packages facilitates code reuse, improves maintainability, and ensures consistency across the API and Data services. This approach makes it easier to manage and update shared functionality.
+
+
+
+6. Implement Database Per Service Approach
+Why: Using a separate database for each service can enhance scalability, improve fault isolation, and allow for more tailored optimization of each service's database schema. This approach can also simplify the microservices architecture by decoupling the services further.
+
+
+
+
+7. Invest More Time in Normalizing Tables
+Why: Proper normalization of database tables reduces redundancy and ensures data integrity. It simplifies the database structure, making it easier to maintain and query, and improves the efficiency of data storage.
+
+
+
+8. Implement Promise.all and Transactions
+Why: Using Promise.all and database transactions can enhance reliability by ensuring that multiple asynchronous operations are executed concurrently and consistently. Transactions ensure that a group of operations either all succeed or all fail, maintaining data consistency.
+
+
+
+9. Improve Database Schema
+Why: Enhancing types, constraints, and foreign keys in the database schema ensures data integrity, enforces relationships between tables, and improves query performance. This leads to a more robust and reliable database design.
+
+
+
+10. Fix Type Status Error in PostgreSQL
+Why: Checking for the existence of a type before creating it prevents errors and ensures that the database schema can be created or updated without conflicts. This step improves the deployment process and reduces the likelihood of runtime errors.
+
+
+
+
+11. Improve Logging
+Why: Enhanced logging provides better visibility into the system's operations, making it easier to monitor, debug, and maintain. Comprehensive logs help track the application's behavior, detect issues early, and provide valuable insights for troubleshooting.
+
+
+
+
+12. Improve Communication Design
+Why: A better communication design can enhance the efficiency and reliability of interactions between services. One approach could be to adopt an event-driven architecture with an event bus or message broker, enabling asynchronous communication and decoupling services.
+
+************************************************************************************************************************************************************************************************************************
+
