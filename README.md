@@ -12,7 +12,7 @@ Navigate to the project directory:
 
 
 cd <project_directory>
-Make sure that ports 4000, 4001, and 4002 are available and the Docker daemon is running.
+Make sure that ports 4000, 4001, 4002 and 5432 are available and the Docker daemon is running.
 
 Start the application using Docker Compose:
 
