@@ -83,4 +83,32 @@ Cronjob Service: Responsible for running at intervals, fetching data from the AP
 
 
 
+************************************************************************************************************************************************************************************************************************
 
+
+System Design
+
+
+
+
+The system runs on Docker Compose as a microservices application. The communication between services is synchronous, meaning one service can call another using API calls.
+
+Services
+API Service:
+
+Handles incoming API requests.
+Provides endpoints for fetching domain data and adding new domains.
+Communicates with the Data Service to retrieve and update data.
+Data Service:
+
+Manages the database and handles data persistence.
+Provides endpoints for saving and retrieving domain analysis data.
+Communicates with the API Service to serve data to users and with the Cronjob Service to update data.
+Cronjob Service:
+
+Runs at specified intervals to fetch data from external APIs (WHOIS and VirusTotal).
+Processes the fetched data and sends it to the Data Service for updating the database.
+Ensures that domain analysis data is kept up-to-date.
+Communication
+API Service to Data Service: The API Service makes synchronous API calls to the Data Service to retrieve and update domain data.
+Cronjob Service to Data Service: The Cronjob Service makes synchronous API calls to the Data Service to update the domain analysis data with the latest information from WHOIS and VirusTota
