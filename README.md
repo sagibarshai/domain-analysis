@@ -14,12 +14,11 @@ Navigate to the project directory:
 cd <project_directory>
 Make sure that ports 4000, 4001, 4002 and 5432 are available and the Docker daemon is running.
 
-Start the application using Docker Compose:
+Start the application using Docker Compose with the command: docker-compose up
 
 
 To change the cronjob interval (default is 30 seconds, can be changed to 30 days), go to Scanner => src => config and modify the cronjobIntervalLoop value.
 
-docker-compose up
 
 ************************************************************************************************************************************************************************************************************************
 
