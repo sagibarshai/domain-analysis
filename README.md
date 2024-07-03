@@ -28,7 +28,7 @@ API Endpoints
 
 1. GET Domain Data
 
-Description: Retrieves domain data from the server. If the domain exists in the list, it returns the domain data. If not, it adds the domain to the list and then returns the data.
+Description: Retrieves domain data from the server. If the domain exists in the list, it returns the domain data. If not, it adds the domain to the list for future analysis.
 
 URL: http://localhost:4000/api/domain/{domain}
 
