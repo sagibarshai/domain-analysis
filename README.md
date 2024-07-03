@@ -43,6 +43,8 @@ Successful response: Returns domain data as JSON or domain status if there is no
 
 
 
+
+
 2. POST Domain for future analysis
 
 
