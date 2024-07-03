@@ -62,3 +62,25 @@ JSON object containing the domain to be added.
 Example:  { "domain": "example.com" }
 
 
+************************************************************************************************************************************************************************************************************************
+
+
+
+System Overview
+
+
+
+
+The system is designed to collect domains to scan, using a cron job that runs at a given interval to fetch data from the WHOIS API and VirusTotal API. It updates the domain analysis data and provides access to this data when a user requests domain information.
+
+Additionally, the system collects request data, a list of domains to scan, WHOIS API data, and VirusTotal API data for future analysis.
+
+The system is separated into three services:
+
+API Service: Responsible for handling API endpoints.
+Data Service: Responsible for saving data to the database and managing the data.
+Cronjob Service: Responsible for running at intervals, fetching data from the APIs, and requesting the Data Service to update the data.
+
+
+
+
